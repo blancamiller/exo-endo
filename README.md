@@ -14,9 +14,9 @@ __Goal:__ learn the exogenous state variables from data
 
 #### State transition function:
 
-     __X_t+1 = M_x * X_t + epsilon_x__
+     X_t+1 = M_x * X_t + epsilon_x
 
-     __E_t+1 = M_e *     + epsilon_e__
+     E_t+1 = M_e *     + epsilon_e
 
   where
   - M_x is element of the Reals 15x15 is the transition function for the exogenous MRP and
