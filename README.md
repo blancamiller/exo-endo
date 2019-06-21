@@ -4,8 +4,8 @@ Recreate and extend Dietterich et. al. (2019)
 ## Problem 3 Set-up: High dimensional linear system
 
 - 30-dimensional state MDP
-  - 15 exogenous state variables: X_t = [X_1t, ..., X_15t]^T
-  - 15 endogenous state variables: E_t = [E_1t, ..., E_15t]^T
+  - 15 exogenous state variables: $$X_{t} = [X_1t, ..., X_15t]^T$$
+  - 15 endogenous state variables: $$E_{t} = [E_1t, ..., E_15t]^T$$
 
 - State transition function:
 
