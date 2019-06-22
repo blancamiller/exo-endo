@@ -3,7 +3,20 @@ Recreate and extend Dietterich et. al. (2019)
 
 # Discovering and Removing Exogenous State Variables and Rewards for Reinforcement Learning
 
-__Goal:__ learn the exogenous state variables from data 
+__Goal:__ learn the exogenous state variables from data. First, we decompose the MDP into the exogenous and endogenous components from training data by optimizing:
+
+
+```
+	   argmax	EXP [|F_exo(s', w_x)|]
+	w_x,w_e,w_G
+
+	    s.t.	^I( F_exo(s';w_x) ;  [F_end(s; w_e), a] | F_exo(s; w_x) ) < e 
+	    		EXP [|| G(F_exo(s'; w_x), F_end(s', w_e); w_G )  - s' ||] < e'
+			
+
+```
+
+where the objective is to maximize the expected "size" of F_exo.
 
 
 ## Problem 3 Set-up: High dimensional linear system
@@ -53,6 +66,8 @@ The elements in M_x, M_e and M are generated according to N(0, 1)
 3. Endo MDP Stepwise: Q-learning on the Stepwise state decomposition (algorithm 2) 
 4. End MDP Oracle: Q-learning on the true endogenous MDP
 
+## Experimental Set-up
+
 - The Q function is represented as a neural network with a single hidden later of 20 tanh units and a linear output layer.
 - The Q-learning updates are implemented with stochastic gradient descent.
 - Exploration is achieved via Boltzmann exploration with temperature parameter Beta.
@@ -60,9 +75,9 @@ The elements in M_x, M_e and M are generated according to N(0, 1)
 
 ```
 
-  	    	       exp( Q(s_t, a) / Beta )
+  	    	       exp( Q(s_t, a) / \beta )
   a_t ~ pi(a|s) = _________________________________
 
-		  sum_i( exp( Q(s_t, a_i) / Beta ))
+		  sum_i( exp( Q(s_t, a_i) / \beta ))
 
 ```
