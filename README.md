@@ -3,7 +3,36 @@ Recreate and extend Dietterich et. al. (2019)
 
 # Discovering and Removing Exogenous State Variables and Rewards for Reinforcement Learning
 
-__Goal:__ learn the exogenous state variables from data. First, we decompose the MDP into the exogenous and endogenous components from training data by optimizing:
+__Goal:__ discover/learn the exogenous state variables from data. This discovery is accomplished by
+
+
+__(1)__ Learning 3 functions, F_exo, F_end, and G, that are parametrized by w_x, w_e, w_G s.t. 
+
+```
+
+	x = F_exo(s; w_x)
+
+	e = F_end(s; w_e)
+
+	s = G(F_exo(s), F_end(s); w_G) 
+
+```
+where s recovers the exogenous and endogenous state parts
+
+and
+
+__(2)__ Capturing as much exogenous state as possible s.t. the following constraints:
+
+    - satisfy the conditional independence relationship:
+
+````
+	P(s'|s,a) = P(x'|x)P(e',x'|e,x,a)
+````
+    - that we recover the original state from the exogenous and endogenous parts   
+
+
+
+First, we decompose the MDP into the exogenous and endogenous components from training data by optimizing:
 
 
 ```
@@ -13,7 +42,6 @@ __Goal:__ learn the exogenous state variables from data. First, we decompose the
 	    s.t.	^I( F_exo(s';w_x) ;  [F_end(s; w_e), a] | F_exo(s; w_x) ) < e 
 	    		EXP [|| G(F_exo(s'; w_x), F_end(s', w_e); w_G )  - s' ||] < e'
 			
-
 ```
 
 where the objective is to maximize the expected "size" of F_exo.
@@ -75,9 +103,9 @@ The elements in M_x, M_e and M are generated according to N(0, 1)
 
 ```
 
-  	    	       exp( Q(s_t, a) / \beta )
+  	    	       exp( Q(s_t, a) / beta )
   a_t ~ pi(a|s) = _________________________________
 
-		  sum_i( exp( Q(s_t, a_i) / \beta ))
+		  sum_i( exp( Q(s_t, a_i) / beta ))
 
 ```
