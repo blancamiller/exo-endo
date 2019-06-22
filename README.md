@@ -58,8 +58,11 @@ The elements in M_x, M_e and M are generated according to N(0, 1)
 - Exploration is achieved via Boltzmann exploration with temperature parameter Beta.
 - Given the current Q-values, the action a_t is selected according to:
 
+```
 
   	    	       exp( Q(s_t, a) / Beta )
   a_t ~ pi(a|s) = _________________________________
 
 		  sum_i( exp( Q(s_t, a_i) / Beta ))
+
+```
