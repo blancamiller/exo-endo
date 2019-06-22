@@ -19,11 +19,8 @@ where s recovers the exogenous and endogenous state parts, and
 
 __(2)__ Capturing as much exogenous state as possible s.t. the following constraints:
 
-    - satisfy the conditional independence relationship:
-
-````
-	P(s'|s,a) = P(x'|x)P(e',x'|e,x,a)
-````
+    - satisfy the conditional independence relationship: P(s'|s,a) = P(x'|x)P(e',x'|e,x,a)
+	
     - that we recover the original state from the exogenous and endogenous parts   
 
 
