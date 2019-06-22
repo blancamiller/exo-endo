@@ -11,9 +11,9 @@ __(1)__ Learning 3 functions, F_exo, F_end, and G, that are parametrized by w_x,
 ```
 	x = F_exo(s; w_x)
 	e = F_end(s; w_e)
-	s = G(F_exo(s), F_end(s); w_G) 
+	s = G(F_exo(s), F_end(s); w_G), where s recovers the exogenous and endogenous state parts.
 ```
-where s recovers the exogenous and endogenous state parts, and by
+
 
 __(2)__ Capturing as much exogenous state as possible s.t. the following constraints are met:
 
