@@ -6,13 +6,11 @@ Recreate and extend Dietterich et. al. (2019)
 __Goal:__ Discover/learn the exogenous and endogenous state variables from training data. This discovery is accomplished by:
 
 
-__(1)__ Learning 3 functions, F_exo, F_end, and G, that are parametrized by w_x, w_e, w_G s.t. 
+__(1)__ Learning 3 functions, F_exo, F_end, and G, that are parametrized by w_x, w_e, w_G, s.t. 
 
 ```
 	x = F_exo(s; w_x)
-
 	e = F_end(s; w_e)
-
 	s = G(F_exo(s), F_end(s); w_G) 
 ```
 where s recovers the exogenous and endogenous state parts, and by
@@ -20,17 +18,16 @@ where s recovers the exogenous and endogenous state parts, and by
 __(2)__ Capturing as much exogenous state as possible s.t. the following constraints are met:
 
     - satisfy the conditional independence relationship: P(s'|s,a) = P(x'|x)P(e',x'|e,x,a)
-	
-    - that we recover the original state from the exogenous and endogenous parts   
+    - recover the original state from the exogenous and endogenous parts   
 
 
 Therefore, the MDP decomposition problem can be formulated as an optimization problem:
 
 ```
-	   argmax	EXP [|F_exo(s', w_x)|]
+	   argmax	EXP [ |F_exo(s', w_x)| ]
 	w_x,w_e,w_G
 	    s.t.	^I( F_exo(s';w_x) ;  [F_end(s; w_e), a] | F_exo(s; w_x) ) < e 
-	    		EXP [|| G(F_exo(s'; w_x), F_end(s', w_e); w_G )  - s' ||] < e'
+	    		EXP [ ||G(F_exo(s'; w_x), F_end(s', w_e); w_G )  - s'|| ] < e'
 ```
 
 where the objective is to maximize the expected "size" of F_exo.
