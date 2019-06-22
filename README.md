@@ -12,11 +12,13 @@ __Goal:__ learn the exogenous state variables from data
 - 15 exogenous: X_{t} = [X_1t, ..., X_15t]^T
 - 15 endogenous: E_{t} = [E_1t, ..., E_15t]^T
 
-#### State transition function:
+#### State Transition Function:
 
      X_t+1 = M_x * X_t + epsilon_x
-
-     E_t+1 = M_e *     + epsilon_e
+     
+		   |E_t|
+     E_t+1 = M_e * |X_t| + epsilon_e
+     	     	   |A_t|
 
   where
   - M_x is element of the Reals 15x15 is the transition function for the exogenous MRP and
@@ -27,6 +29,8 @@ __Goal:__ learn the exogenous state variables from data
   - epsilon_x is element of the Reals 15x1 is the exogenous noise, whose elemetns are distributed accoding to N(0, 0.09)
   - epsilon_e is element of the Reals 51x1 is the endogenous noise, whose elements are distributed accodgin to N(0, 0.04)
 
+#### State Vector
+
 - S_t is an observed state vector and a linear mixture of the hidden exogenous and endogenous states
 - S_t = M * [], where M is an element of the Reals 30x30
 
@@ -34,7 +38,7 @@ The elements in M_x, M_e and M are generated according to N(0, 1)
     - each row of each matrix is normalized to sum to 0.99 for stability
     - the starting state is the zero vector
 
-Reward at time t
+#### Reward at time t and its corresponding exogenous and endogenous reward 
 - R_t = R_xt + R_et
   - Exogenous reward: R_xt = -3 * avg(X_t)
   - Endogenous reward: R_et = exp[-|avg(E_t) - 1|],
@@ -44,7 +48,18 @@ Reward at time t
 
 ## 4 Q-learning Configurations:
 
-1.
-2.
-3.
-4. 
+1. Full-MDP: Q-learning on the full MDP 
+2. Endo MDP Global: Q-learning on the decomposed MDPs discovered by the Global (algorithm 1)
+3. Endo MDP Stepwise: Q-learning on the Stepwise state decomposition (algorithm 2) 
+4. End MDP Oracle: Q-learning on the true endogenous MDP
+
+- The Q function is represented as a neural network with a single hidden later of 20 tanh units and a linear output layer.
+- The Q-learning updates are implemented with stochastic gradient descent.
+- Exploration is achieved via Boltzmann exploration with temperature parameter Beta.
+- Given the current Q-values, the action a_t is selected according to:
+
+
+  	    	       exp( Q(s_t, a) / Beta )
+  a_t ~ pi(a|s) = _________________________________
+
+		  sum_i( exp( Q(s_t, a_i) / Beta ))
