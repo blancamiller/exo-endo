@@ -35,7 +35,7 @@ where the objective is to maximize the expected "size" of F_exo.
 
 ## Problem 3 Set-up: High dimensional linear system
 
-#### State MDP, 30-dimensional, where the exogenous and endogenous state variables are:
+#### State MDP: 30-dimensional with exogenous and endogenous state variables defined as:
 
 ````
 	X_{t} = [X_1t, ..., X_15t]^T
