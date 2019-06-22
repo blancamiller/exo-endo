@@ -29,7 +29,6 @@ Therefore, the MDP decomposition problem can be formulated as an optimization pr
 ```
 	   argmax	EXP [|F_exo(s', w_x)|]
 	w_x,w_e,w_G
-
 	    s.t.	^I( F_exo(s';w_x) ;  [F_end(s; w_e), a] | F_exo(s; w_x) ) < e 
 	    		EXP [|| G(F_exo(s'; w_x), F_end(s', w_e); w_G )  - s' ||] < e'
 ```
@@ -47,9 +46,9 @@ where the objective is to maximize the expected "size" of F_exo.
 
      X_t+1 = M_x * X_t + epsilon_x
      
-		   |E_t|
+			|E_t|
      E_t+1 = M_e * |X_t| + epsilon_e
-     	     	   |A_t|
+     	     |A_t|
 
   where
   - M_x is element of the Reals 15x15 is the transition function for the exogenous MRP and
