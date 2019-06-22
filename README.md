@@ -3,7 +3,7 @@ Recreate and extend Dietterich et. al. (2019)
 
 # Discovering and Removing Exogenous State Variables and Rewards for Reinforcement Learning
 
-__Goal:__ discover/learn the exogenous state variables from data. This discovery is accomplished by:
+__Goal:__ Discover/learn the exogenous and endogenous state variables from training data. This discovery is accomplished by:
 
 
 __(1)__ Learning 3 functions, F_exo, F_end, and G, that are parametrized by w_x, w_e, w_G s.t. 
@@ -15,18 +15,16 @@ __(1)__ Learning 3 functions, F_exo, F_end, and G, that are parametrized by w_x,
 
 	s = G(F_exo(s), F_end(s); w_G) 
 ```
-where s recovers the exogenous and endogenous state parts, and 
+where s recovers the exogenous and endogenous state parts, and by
 
-__(2)__ Capturing as much exogenous state as possible s.t. the following constraints:
+__(2)__ Capturing as much exogenous state as possible s.t. the following constraints are met:
 
     - satisfy the conditional independence relationship: P(s'|s,a) = P(x'|x)P(e',x'|e,x,a)
 	
     - that we recover the original state from the exogenous and endogenous parts   
 
 
-
-First, we decompose the MDP into the exogenous and endogenous components from training data by optimizing:
-
+Therefore, the MDP decomposition problem can be formulated as an optimization problem:
 
 ```
 	   argmax	EXP [|F_exo(s', w_x)|]
@@ -34,7 +32,6 @@ First, we decompose the MDP into the exogenous and endogenous components from tr
 
 	    s.t.	^I( F_exo(s';w_x) ;  [F_end(s; w_e), a] | F_exo(s; w_x) ) < e 
 	    		EXP [|| G(F_exo(s'; w_x), F_end(s', w_e); w_G )  - s' ||] < e'
-			
 ```
 
 where the objective is to maximize the expected "size" of F_exo.
