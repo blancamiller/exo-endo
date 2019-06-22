@@ -38,17 +38,21 @@ where the objective is to maximize the expected "size" of F_exo.
 
 ## Problem 3 Set-up: High dimensional linear system
 
-#### 30-dimensional State MDP, where the state variables are:
-- 15 exogenous: X_{t} = [X_1t, ..., X_15t]^T
-- 15 endogenous: E_{t} = [E_1t, ..., E_15t]^T
+#### State MDP, 30-dimensional, where the exogenous and endogenous state variables are:
 
+````
+	X_{t} = [X_1t, ..., X_15t]^T
+	E_{t} = [E_1t, ..., E_15t]^T
+````
 #### State Transition Function:
 
+````
      X_t+1 = M_x * X_t + epsilon_x
      
-			|E_t|
+		   |E_t|
      E_t+1 = M_e * |X_t| + epsilon_e
-     	     |A_t|
+     	     	   |A_t|
+````
 
   where
   - M_x is element of the Reals 15x15 is the transition function for the exogenous MRP and
