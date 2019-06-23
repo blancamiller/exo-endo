@@ -1,6 +1,6 @@
 # Discovering and Removing Exogenous State Variables and Rewards for Reinforcement Learning (2018)
 
-__Goal:__ Discover/learn the exogenous and endogenous state variables from training data. This discovery is accomplished by:
+__Goal:__ Discover/learn the exogenous and endogenous state variables from training data. This is accomplished by:
 
 
 __(1)__ Learning 3 functions, F_exo, F_end, and G, that are parametrized by w_x, w_e, w_G, s.t. 
