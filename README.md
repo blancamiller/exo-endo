@@ -21,7 +21,7 @@ __(2)__ Capturing as much exogenous state as possible s.t. the following constra
     - recover the original state from the exogenous and endogenous parts   
 
 
-Therefore, the MDP decomposition problem can be formulated as an optimization problem:
+The MDP decomposition problem can be formulated as an optimization problem where our goal is to maximize the expected size of F_exo:
 
 ```
 	   argmax	EXP [ |F_exo(s', w_x)| ]
