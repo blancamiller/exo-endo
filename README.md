@@ -32,7 +32,9 @@ We can then fomulate the MDP decomposition problem as an optimization problem wh
 
 ## Problem 3 Set-up: High dimensional linear system
 
-#### State MDP: 30-dimensional with exogenous and endogenous state variables defined as:
+#### State MDP:
+
+30-dimensional  with exogenous and endogenous state variables respectively defined as:
 
 ````
 	X_{t} = [X_1t, ..., X_15t]^T
@@ -50,10 +52,7 @@ We can then fomulate the MDP decomposition problem as an optimization problem wh
 
   where
   - M_x is element of the Reals 15x15 is the transition function for the exogenous MRP and
-  - M_e is element of the Reals 15x31 is the transition function for the endogenous MDP and involves E_t, X_t, and A_t, and
-    - E_t: the current time, t, endogenous state variable 
-    - X_t: the current time, t, endogenous state variable
-    - A_t: the current time, t, action variable
+  - M_e is element of the Reals 15x31 is the transition function for the endogenous MDP and involves E_t, X_t, and A_t, and at current time, t, where A_t is the action variable
   - epsilon_x is element of the Reals 15x1 is the exogenous noise, whose elemetns are distributed accoding to N(0, 0.09)
   - epsilon_e is element of the Reals 51x1 is the endogenous noise, whose elements are distributed accodgin to N(0, 0.04)
 
