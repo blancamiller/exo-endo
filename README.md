@@ -1,5 +1,5 @@
 # exo-endo
-Recreate and extend Dietterich et. al. (2019)
+Recreate and extend Dietterich et. al. (2018)
 
 # Discovering and Removing Exogenous State Variables and Rewards for Reinforcement Learning
 
@@ -29,6 +29,25 @@ We can then fomulate the MDP decomposition problem as an optimization problem wh
 	    s.t.	^I( F_exo(s';w_x) ;  [F_end(s; w_e), a] | F_exo(s; w_x) ) < e 
 	    		EXP [ ||G(F_exo(s'; w_x), F_end(s', w_e); w_G )  - s'|| ] < e'
 ```
+
+## Instantiate the Optimization Problem
+
+__Goal:__ Evolve the optimization problem from an abstract schema to a instantiated version we can implement. 
+
+
+## Two Algorithms for Decomposing the MDP into Exo-Endo Components
+
+__Goal:__ The true optimization problem is difficult to solve because of a constraint that uses the Partial Correlation Coefficient (PCC) to control for a confounding variable when we are interested in knowing to what extent there is a relationship between F_exo(s';w_x) & F_end(s'; w_e). Although we have an approximated objective by leveraging PCC, we still have the issue of an unknown optimal value for the dimensionality of d_x. We cannot simply loop through all of the possible value of d_x = 0, ...., d and choose the one that acheives maximum variance, because it requires O(d) Stiefel manifold optimization problems. Instead, we iterate d_x from d -> 1 and stop with the first projection W_x that satisfies the PCC constraint.
+
+
+We use the following two algorithms to attain the maximal variance of W_x by finding the largest d_x that satisfies the PCC constraint. The first algorithm will still solve O(d) optimization problems, so to reduce this algorithm (2) will use a Stepwise approach. 
+
+
+(1) Global Exo-Endo State Decomposition 
+
+
+(2) Stepwise Exo-Endo State Decomposition
+
 
 ## Problem 3 Set-up: High dimensional linear system
 
