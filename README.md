@@ -1,7 +1,4 @@
-# exo-endo
-Recreate and extend Dietterich et. al. (2018)
-
-# Discovering and Removing Exogenous State Variables and Rewards for Reinforcement Learning
+# Discovering and Removing Exogenous State Variables and Rewards for Reinforcement Learning (2018)
 
 __Goal:__ Discover/learn the exogenous and endogenous state variables from training data. This discovery is accomplished by:
 
