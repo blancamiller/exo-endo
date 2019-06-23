@@ -21,7 +21,7 @@ __(2)__ Capturing as much exogenous state as possible s.t. the following constra
     - recover the original state from the exogenous and endogenous parts   
 
 
-We fomulate the MDP decomposition problem as an optimization problem where our goal is to maximize the expected size of F_exo:
+We can then fomulate the MDP decomposition problem as an optimization problem where our goal is to maximize the expected size of F_exo:
 
 ```
 	   argmax	EXP [ |F_exo(s', w_x)| ]
@@ -29,9 +29,6 @@ We fomulate the MDP decomposition problem as an optimization problem where our g
 	    s.t.	^I( F_exo(s';w_x) ;  [F_end(s; w_e), a] | F_exo(s; w_x) ) < e 
 	    		EXP [ ||G(F_exo(s'; w_x), F_end(s', w_e); w_G )  - s'|| ] < e'
 ```
-
-where the objective is to maximize the expected "size" of F_exo.
-
 
 ## Problem 3 Set-up: High dimensional linear system
 
