@@ -99,9 +99,12 @@ The elements in M_x, M_e and M are generated according to N(0, 1)
 ## Experimental Set-up
 
 - The Q function is represented as a neural network with a single hidden later of 20 tanh units and a linear output layer.
-- The Q-learning updates are implemented with stochastic gradient descent.
-- Exploration is achieved via Boltzmann exploration with temperature parameter Beta.
-- Given the current Q-values, the action a_t is selected according to:
+- The Q-learning updates are implemented with stochastic gradient descent
+- The Q-learning discount factor is 0.9, learning rate is 0.05
+- Exploration is achieved via Boltzmann exploration with temperature parameter Beta set to 1.0.
+- Steepest descent solving is used from Manopt
+
+- Given a set of Q-values, an action a_t is selected according to:
 
 ```
 

@@ -1,0 +1,34 @@
+import numpy as np
+
+def (step_size=0.05, epsilon=0.5, gamma=0.90):
+
+    # Randomly initialize Q(s,a), except Q(terminal, *)=0
+    q_init = np.random.choice() # -- change the Q-value fcn. depending on the environment  
+
+    # Loop of each episode 
+    done = True 
+    while done is False:
+
+        # Initialize the starting state
+        s = 0 # -- change depending on the environment 
+
+        # Loop for each step of the episode:
+        for e in len(episode):
+
+            # Choose action, a, from the current state, s, using a policy derived from Q
+
+
+            #Take action a, observe r and next_state
+
+
+            # Q-Fcn: Q(S,A)<--Q(S,A) + alpha[R+gamma * max_aQ(S',a)-Q(S,A)]
+
+
+            # S <-- S'
+
+
+        # Until S is terminal 
+
+
+        
+        
