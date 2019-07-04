@@ -42,7 +42,7 @@ The simplpified approximate solution expressed in matrix form is:
 __Note:__
 - We approximate I_hat(X;Y|Z) using the partial correlation coefficient PCC(X,Y|Z) which effectively controls for the confounding variance when we are interested in knowing to what extent there is a relationship between two variables, X&Y
 - The orthonomality condition constrains W_x to lie on a Stiefel manifold. Although several optimization algorithms exist for optimizing on Stiefel manifolds, Dietterich et. al. (2019) uses an algorithm implemented on the Manopt package.
-- 
+
 
 ## Two Algorithms for Decomposing the MDP into Exo-Endo Components
 
