@@ -58,7 +58,9 @@ We use the following two algorithms to attain the max variance of W_x by finding
 
 ## Problem 3 Set-up: High dimensional linear system
 
-#### State MDP:
+### MDP
+
+#### State:
 
 30-dimensional  with exogenous and endogenous state variables respectively defined as:
 
@@ -66,6 +68,7 @@ We use the following two algorithms to attain the max variance of W_x by finding
 	X_{t} = [X_1t, ..., X_15t]^T
 	E_{t} = [E_1t, ..., E_15t]^T
 ````
+
 #### State Transition Function:
 
 ````
@@ -102,7 +105,13 @@ For each time step t we have two exogenous and endogenous components:
   - Endogenous reward: R_et = exp[-|avg(E_t) - 1|],
   
   where average is the average over a vector's elements
-  
+
+#### Action Selection/Policy:
+
+````
+a_t ~ pi(a|s_t) = exp(Q(s_t, a)/beta) / sum_i exp(Q(s_t,a_i)/beta) 
+
+````
 
 ## 4 Q-learning Configurations:
 
